@@ -19,7 +19,7 @@ namespace ConsoleApp1
 {
     class Program
     {
-        private static readonly double AcceptableError = 0.00001;
+        private static readonly double AcceptableError = 0.0001;
         private static readonly int MaxEpoch = 5000;
         private static readonly double[][] AndInput ={
             new double[2] { 0.0, 0.0 },
@@ -37,13 +37,13 @@ namespace ConsoleApp1
             INeuralDataSet trainingSet = new BasicNeuralDataSet(AndInput, AndIdeal);
             var network = new BasicNetwork();
             network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 2));
-            network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 6));
+            network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 2));
             network.AddLayer(new BasicLayer(new ActivationSigmoid(), true, 1));
             network.Structure.FinalizeStructure();
             network.Reset();
 
             ITrain train = new ResilientPropagation(network, trainingSet);
-
+            
             int epoch = 1;
             do
             {
