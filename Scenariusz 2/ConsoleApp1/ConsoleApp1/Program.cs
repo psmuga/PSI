@@ -15,7 +15,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             var p = new Program();
-            p._network.maximumIteration = int.Parse(10000.ToString());
+            p._network.maximumIteration = int.Parse(100000.ToString());
             p.Test();
             p.Check();
 
@@ -118,7 +118,7 @@ namespace ConsoleApp1
             public string Value;
         }
 
-        public double learningRate = 0.15;
+        public double learningRate = 1.0;
 
         public int ImageSize = 0;
         public int InputNum = 0;
@@ -234,7 +234,7 @@ namespace ConsoleApp1
 
             for (int j = 0; j < OutputNum; j++)
             {
-                total += Math.Pow((outputLayer[j].Target - outputLayer[j].Output), 2.0) / 2.0;
+                total += Math.Pow((outputLayer[j].Target - outputLayer[j].Output), 2) / 2.0;
             }
 
             return total;
