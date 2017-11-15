@@ -100,7 +100,20 @@ namespace ConsoleApp1
             int best = network.Winner(input);
 
             Console.WriteLine($"Rozpoznano: {_literki[best]}" );
-            var wyniki = new double[10][];
+
+            foreach (IMLDataPair pair in trainingSet)
+            {
+                IMLData output = network.Compute(pair.Input);
+
+                Console.WriteLine($"values: {output[0].ToString("0.000")} {output[1].ToString("0.000")} {output[2].ToString("0.000")} {output[3].ToString("0.000")} {output[4].ToString("0.000")} {output[5].ToString("0.000")} {output[6].ToString("0.000")} {output[7].ToString("0.000")} {output[8].ToString("0.000")} {output[9].ToString("0.000")} {output[10].ToString("0.000")} {output[11].ToString("0.000")} {output[12].ToString("0.000")} {output[13].ToString("0.000")} {output[14].ToString("0.000")} {output[15].ToString("0.000")} {output[16].ToString("0.000")} {output[17].ToString("0.000")} {output[18].ToString("0.000")} {output[19].ToString("0.000")}");
+            }
+
+
+
+
+
+
+            //var wyniki = new double[20][];
 
             //int index = 0;
             //Console.WriteLine("\nResults:");
@@ -108,9 +121,9 @@ namespace ConsoleApp1
             //{
             //    IMLData output = network.Compute(pair.Input);
             //    wyniki[index] = new double[20];
-            //    for (int i = 0; i < output.Count; i++)
+            //    for (int i = 0; i < output.Count - 1; i++)
             //    {
-            //        if(output[i] <= 1)
+            //        if (output[i] <= 1)
             //            wyniki[index][i] = output[i];
             //        else
             //        {
@@ -133,9 +146,9 @@ namespace ConsoleApp1
             //}
 
             //double[] wyn = findMaximumIndex(wyniki);
-            //Console.WriteLine("Rozpoznano: " + _literki[(int) wyn[1]]);
-            
-            
+            //Console.WriteLine("Rozpoznano: " + _literki[(int)wyn[0]]);
+
+
             Console.ReadKey();
         }
         public static double[] findMaximumIndex(double[][] a)
