@@ -14,7 +14,7 @@ hiddenLayer.project(outputLayer);
 var network = new Network({
     input: inputLayer,
     hidden: [hiddenLayer],
-    output: outputLayer
+	output: outputLayer
 });
 
 
@@ -33,7 +33,6 @@ somInstance.train(trainingData);
 var sample = [5.9,3.0,5.1,1.8];
 var group = somInstance.classify(sample);
 console.log(getFlowerName2(group));
-
 
 
 
@@ -72,8 +71,9 @@ fs.readFile('iris.txt','utf8',function(err, data){
 			network.activate(trainingData[j].input);
 			network.propagate(learningRate, trainingData[j].output);
 		}
-		if(i%1000 == 0)
-			console.log("Training... "+i/100+"% complete. ");
+		// if(i%1000 == 0)
+		// 	console.log("Training... "+i/100+"% complete. ");
+		//console.log(network.log);
 	}
 
 	// use the network to classify flowers based on testing data
@@ -115,16 +115,16 @@ function getFlowerName2(index){
 	return "Iris-virginica";
 }
 
-var som = require('node-som');
-var somInstance = new som({
-	inputLength: 4,
-	loggingEnabled:true
-});
-somInstance.train(trainingData);
+// var som = require('node-som');
+// var somInstance = new som({
+// 	inputLength: 4,
+// 	loggingEnabled:true
+// });
+// somInstance.train(trainingData);
 
-var sample = [5.9,3.0,5.1,1.8];
-var group = somInstance.classify(sample);
-console.log(getFlowerName2(group));
+// var sample = [5.9,3.0,5.1,1.8];
+// var group = somInstance.classify(sample);
+// console.log(getFlowerName2(group));
 
 
 
